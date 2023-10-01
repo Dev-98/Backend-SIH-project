@@ -14,6 +14,9 @@ carrier = {
     "A": "Arts/Creative Industries",
     "B": "Business/Entrepreneurship",
     "L": "Law/Legal Professions",
+    "S": "Sports and Coaching",
+    "R": "Science and Research",
+    "C": "Social Services and Counseling",
 }
 
 def find_max_word_and_sum(numbers_with_words):

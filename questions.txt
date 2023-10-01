@@ -1,3 +1,6 @@
+CLASS 6-8th 
+Aptitude and Interests:
+
 Question: What activities do you enjoy outside of school?
 
 Option A: Playing sports (80% towards Athletics/Coaching)
@@ -8,12 +11,31 @@ Option D: Building things (80% towards Engineering/Construction)
 
 Question: What subjects in school do you enjoy the most?
 
-Option A: Math (70% towards Engineering/STEM Careers)
-Option B: History (60% towards Teaching/Research)
-Option C: English (50% towards Writing/Communication)
-Option D: Science (70% towards Medical/Healthcare Careers)
+Option A: Mathematics and Science (70% towards Engineering and Technology)
+Option B: Physical Education and Sports (70% towards Sports)
+Option C: Art and Design (70% towards Arts and Creative Industries)
+Option D: Social Studies and Economics (70% towards Business and Entrepreneurship)
 ==========================
 
+Is there a particular field or profession that you find fascinating?
+1 Professional Sports and Athletics (70% towards Sports)
+2 Data Analysis and Machine Learning (70% towards Data Science and Analytics)
+3 Medical Research and Healthcare Innovation (70% towards Healthcare and Medicine)
+4 Entrepreneurship and Business Development (70% towards Business and Entrepreneurship)
+==========================
+
+Have you ever thought about what kind of problems in the world you'd like to solve?
+1 Advancing Technology for Education and Learning (70% towards EdTech and Education)
+2 Improving Healthcare Access and Treatment (70% towards Healthcare and Medicine)
+3 Innovating Solutions for Global Poverty and Inequality (70% towards SocialServices/Counseling)
+4 Designing Sustainable Infrastructure for Growing Cities (70% towards Engineering and Technology)
+==========================
+
+
+
+==========================
+
+==========================
 Which of the following options aligns most with your interests?
 
 Option A: Analyzing complex data sets and finding patterns (70% towards Data Analysis/Statistics)
