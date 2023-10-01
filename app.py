@@ -20,22 +20,26 @@ carrier = {
 }
 
 def find_max_word_and_sum(numbers_with_words):
+
     word_sums = {}
+    total = 0
     
     for item in numbers_with_words:
-        clean_item = item.strip().strip('"')
-        print(clean_item)
+        clean_item = item.strip().strip('"').strip("'")
+        # print(clean_item)
 
         number = int(clean_item[0])
         word = clean_item[-1]
         
+        total += number
+
         if word in word_sums:
             word_sums[word] += number
         else:
             word_sums[word] = number
     
     
-    return word_sums
+    return total, word_sums
 
 
 # numbers_with_words =  
@@ -49,15 +53,17 @@ def hello():
 @app.route("/predict", methods = ["POST"])
 def predict():
     if request.method == "POST":
-        t = request.form.get("output")
+        t = request.form.get("output").replace("[","").replace("]", "")
         test = t.split(',')
 
-        max_word = find_max_word_and_sum(test)
+        denomino, max_word = find_max_word_and_sum(test)
         words = list(max_word.keys())
     
         final = {}
         for i in words:
-            final[carrier[i]] = max_word[i]
+            percent = (max_word[i] / denomino) * 100
+
+            final[carrier[i]] = str(round(percent, 2))+" %"
 
         
         return jsonify(final)
