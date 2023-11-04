@@ -1,10 +1,10 @@
-import csv
+import csv, os
 from github import Github, Auth
 import argparse
 
 
 def create_repository(name, mail, passw):
-  CLASSIC = "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" #os.environ.get('GITHUB_PAT') 
+  CLASSIC = os.environ.get('GITHUB_PAT') 
   try :
     # Authenticationg the Token
     auth = Auth.Token(CLASSIC)
