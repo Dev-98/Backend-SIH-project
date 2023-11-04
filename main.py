@@ -1,6 +1,6 @@
 from flask_cors import CORS
 import os, csv
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request
 from repo import create_repository
 
 app = Flask(__name__)
