@@ -63,7 +63,7 @@ def predict():
         for i in words:
             percent = (max_word[i] / denomino) * 100
 
-            final[carrier[i]] = str(round(percent, 2))+" %"
+            final[carrier[i]] = int(round(percent, 2))
 
         
         return jsonify(final)
