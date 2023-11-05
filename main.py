@@ -45,7 +45,7 @@ def login():
         email = request.form.get('email')
         passw = request.form.get('password')
 
-        ans = check_mail(email, passw)
+        ans = check_mail(email)
 
         return jsonify(ans), 200
         

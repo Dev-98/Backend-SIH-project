@@ -48,26 +48,22 @@ def create_repository(name, mail, passw):
   except Exception as e:
     return str(e)
   
-def check_mail(email,passw):
+def check_mail(email):
   
   file_path = 'data.csv'
   mails = []
-  passwords = []
   
   file_content = repo.get_contents(file_path)
   csv_data = file_content.decoded_content.decode('utf-8').splitlines()
 
   reader = csv.reader(csv_data)
   for row in reader:
-  
     mails.append(row[1])
-    passwords.append(row[2])
-
-  for i in range(len(mails)):
-    if email == mails[i] and passw == passwords[i]:
-        return True
-    else:
-        return False
+  
+  if email.lower() in mails :
+      return True
+  else:
+      return False
 
 
 if __name__ == "__main__":
@@ -85,7 +81,7 @@ if __name__ == "__main__":
 
   # print(mails,passwords)
   
-  if check_mail("ayush@gmail.com","123456789"):
+  if check_mail("dev28@gmail.com"):
     print("Worked")
   
   else:
