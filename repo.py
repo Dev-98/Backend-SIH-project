@@ -3,7 +3,7 @@ from github import Github, Auth
 import argparse
 
 
-CLASSIC = "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" #os.environ.get('GITHUB_PAT') 
+CLASSIC = os.environ.get('GITHUB_PAT') 
 
 auth = Auth.Token(CLASSIC)
 g = Github(auth=auth)
