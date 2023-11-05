@@ -1,7 +1,7 @@
 from flask_cors import CORS
 import os, csv
 from flask import Flask, jsonify, request
-from repo import create_repository
+from repo import create_repository, check_mail
 
 app = Flask(__name__)
 
@@ -45,19 +45,10 @@ def login():
         email = request.form.get('email')
         passw = request.form.get('password')
 
-        mails = []
-        passwords = []
-        with open("data.csv", mode='r', newline='') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                mails.append(row[1])
-                passwords.append(row[2])
+        ans = check_mail(email, passw)
 
-        for i in range(len(mails)):
-            if email == mails[i] and passw == passwords[i]:
-                return jsonify("yes")
-            else:
-                return jsonify("no")
+        return jsonify(ans), 200
+        
 
 def find_max_word_and_sum(numbers_with_words):
 

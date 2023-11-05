@@ -3,14 +3,15 @@ from github import Github, Auth
 import argparse
 
 
-def create_repository(name, mail, passw):
-  CLASSIC = os.environ.get('GITHUB_PAT') 
-  try :
-    # Authenticationg the Token
-    auth = Auth.Token(CLASSIC)
-    g = Github(auth=auth)
+CLASSIC = "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" #os.environ.get('GITHUB_PAT') 
 
-    repo = g.get_user().get_repo("database-SIH")
+auth = Auth.Token(CLASSIC)
+g = Github(auth=auth)
+
+repo = g.get_user().get_repo("database-SIH")
+
+def create_repository(name, mail, passw):
+  try :
     
     # Define your data
     data = [
@@ -39,6 +40,7 @@ def create_repository(name, mail, passw):
 
     file_content = repo.get_contents(file_path)
     # Commit the updated file to the repository
+
     repo.update_file('data.csv', 'Updated data', open(file_path, 'rb').read(),file_content.sha, branch='main')
     
     return "Data uploaded successfully"
@@ -46,35 +48,46 @@ def create_repository(name, mail, passw):
   except Exception as e:
     return str(e)
   
-def get_args():
-  parser = argparse.ArgumentParser(description="Kreate Automation")
-
-  parser.add_argument('-name', type=str, 
-          help="provide a URL of a GDrive file with public access")
+def check_mail(email,passw):
   
-  parser.add_argument("-mail", type=str,
-          help="this goes with the name to create various repos for single user")
-
-  parser.add_argument("-passw", type=str,
-          help="this goes with the name to create various repos for single user")
+  file_path = 'data.csv'
+  mails = []
+  passwords = []
   
-  args,unknown = parser.parse_known_args()
+  file_content = repo.get_contents(file_path)
+  csv_data = file_content.decoded_content.decode('utf-8').splitlines()
 
-  return args
+  reader = csv.reader(csv_data)
+  for row in reader:
+  
+    mails.append(row[1])
+    passwords.append(row[2])
+
+  for i in range(len(mails)):
+    if email == mails[i] and passw == passwords[i]:
+        return True
+    else:
+        return False
+
 
 if __name__ == "__main__":
   # args = get_args()
 
   # print(create_repository(args.name,args.mail,args.passw))
-  file_path = 'data.csv'
-  mails = []
-  passwords = []
-  with open("data.csv", mode='r', newline='') as file:
-      reader = csv.reader(file)
-      for row in reader:
-          mails.append(row[1])
-          passwords.append(row[2])
+  # file_path = 'data.csv'
+  # mails = []
+  # passwords = []
+  # with open("data.csv", mode='r', newline='') as file:
+  #     reader = csv.reader(file)
+  #     for row in reader:
+  #         mails.append(row[1])
+  #         passwords.append(row[2])
 
-  print(mails,passwords)
+  # print(mails,passwords)
   
- 
+  if check_mail("ayush@gmail.com","123456789"):
+    print("Worked")
+  
+  else:
+    print("Didn't Worked")
+     
