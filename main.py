@@ -47,7 +47,7 @@ def login():
 
         ans = check_mail(email)
 
-        return jsonify(ans), 200
+        return jsonify({"ans":ans}), 200
         
 
 def find_max_word_and_sum(numbers_with_words):
