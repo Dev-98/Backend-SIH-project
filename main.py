@@ -1,7 +1,7 @@
 from flask_cors import CORS
-import os, csv
 from flask import Flask, jsonify, request
 from repo import create_repository, check_mail
+import os
 
 app = Flask(__name__)
 
@@ -28,16 +28,17 @@ def hello():
 @app.route('/save', methods=['POST'])
 def save():
     if request.method == 'POST':
+    # data = request.form[]
         fname = request.form.get('fname')
         lname = request.form.get('lname')
         mail = request.form.get('email')
         passw = request.form.get('password')
 
-        full_name = fname+' '+lname
+    full_name = fname+' '+lname
 
-        a = create_repository(full_name, mail, passw)
+    a = create_repository(full_name, mail, passw)
 
-        return jsonify(a), 200
+    return jsonify(a), 200
     
 @app.route('/authenticate', methods=['POST'])
 def login():
@@ -73,7 +74,6 @@ def find_max_word_and_sum(numbers_with_words):
     return total, word_sums
 
 
-
 @app.route("/predict", methods = ["POST"])
 def predict():
     if request.method == "POST":
@@ -91,7 +91,23 @@ def predict():
 
         
         return jsonify(final)
-    
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+
+    # if request.method == "POST":
+    #     t = request.form.get("output").replace("[","").replace("]", "")
+    #     test = t.split(',')
+
+    #     denomino, max_word = find_max_word_and_sum(test)
+    #     words = list(max_word.keys())
+    
+    #     final = {}
+    #     for i in words:
+    #         percent = (max_word[i] / denomino) * 100
+
+    #         final[carrier[i]] = int(round(percent, 2))
+
+        
+    #     return jsonify(final)
