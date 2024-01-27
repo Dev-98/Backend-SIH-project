@@ -3,7 +3,7 @@ from github import Github, Auth
 import argparse
 
 
-CLASSIC = os.environ.get('GITHUB_PAT') 
+CLASSIC = os.environ.get('GITHUB_PAT',"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")
 
 auth = Auth.Token(CLASSIC)
 g = Github(auth=auth)
@@ -62,6 +62,7 @@ def check_mail(email,passw):
   
     mails.append(row[1])
     passwords.append(row[2])
+    
   print(mails)
   print(passwords)
   for i in range(len(mails)):

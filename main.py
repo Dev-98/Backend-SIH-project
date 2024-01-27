@@ -38,7 +38,7 @@ def save():
 
     a = create_repository(full_name, mail, passw)
 
-    return jsonify(a), 200
+    return jsonify({"out": a}), 200
     
 @app.route('/authenticate', methods=['POST'])
 def login():
