@@ -1,9 +1,9 @@
 import csv, os
 from github import Github, Auth
 import argparse
+# from config import GITHUB_PAT
 
-
-CLASSIC = os.environ.get('GITHUB_PAT',"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")
+CLASSIC = os.environ.get('GITHUB_PAT') #,GITHUB_PAT)
 
 auth = Auth.Token(CLASSIC)
 g = Github(auth=auth)
@@ -62,15 +62,16 @@ def check_mail(email,passw):
   
     mails.append(row[1])
     passwords.append(row[2])
-    
+
   print(mails)
   print(passwords)
+
   for i in range(len(mails)):
     if email == mails[i]:
       print(mails[i])
       if passw == passwords[i]:
         return True
-  
+      
   return False
 
 if __name__ == "__main__":
@@ -88,7 +89,7 @@ if __name__ == "__main__":
 
   # print(mails,passwords)
   
-  if check_mail("dev@gmail.com","12323"):
+  if check_mail("dev@gmail.com","123123"):
     print("Worked")
   
   else:

@@ -27,14 +27,13 @@ def hello():
 
 @app.route('/save', methods=['POST'])
 def save():
-    if request.method == 'POST':
-    # data = request.form[]
-        fname = request.form.get('fname')
-        lname = request.form.get('lname')
-        mail = request.form.get('email')
-        passw = request.form.get('password')
+    
+    data = request.json
+    
+    full_name = data['username']
+    mail = data['email']
+    passw = data['password']
 
-    full_name = fname+' '+lname
 
     a = create_repository(full_name, mail, passw)
 
@@ -42,13 +41,13 @@ def save():
     
 @app.route('/authenticate', methods=['POST'])
 def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        passw = request.form.get('password')
+    data = request.json
+    email = data['username']
+    passw = data['password']
 
-        ans = check_mail(email,passw)
+    ans = check_mail(email,passw)
 
-        return jsonify({"ans":ans}), 200
+    return jsonify({"ans":ans}), 200
         
 
 def find_max_word_and_sum(numbers_with_words):
